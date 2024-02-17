@@ -1,12 +1,12 @@
 const mysql = require('mysql');
-const db = mysql.createPool({
+const pool= mysql.createPool({
     host:'localhost',
     user:'root',
     password:'',
     database:'e-commerce'
 })
 
-db.getConnection((error,connection) => {
+pool.getConnection((error,connection) => {
 if(error){
     console.log(error)
 }else{
@@ -16,4 +16,4 @@ if(error){
 connection.release()//libéréer la connection aprés réusite pour eviter les fuites de cpnnexion
 })
 
-module.exports=db
+module.exports=pool
